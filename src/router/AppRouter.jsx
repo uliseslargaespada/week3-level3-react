@@ -7,7 +7,7 @@ function AppRouter() {
   return (
     <BrowserRouter>
       <MainLayout>
-        <nav className="card" style={{ marginBottom: "1rem" }}>
+        <nav className="card d-flex" style={{ marginBottom: "1rem" }}>
           <NavLink to="/" end>
             Today
           </NavLink>

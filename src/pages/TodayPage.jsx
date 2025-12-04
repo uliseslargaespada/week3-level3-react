@@ -4,6 +4,9 @@ import CurrentWeatherCard from "../components/weather/CurrentWeatherCard.jsx";
 import SearchBar from "../components/weather/SearchBar.jsx";
 import UnitsToggle from "../components/weather/UnitsToggle.jsx";
 
+// Bootstrap imports
+import Spinner from 'react-bootstrap/Spinner';
+
 /**
  * Initial Today page.
  * Static content just to validate layout, JSX and styling.
@@ -37,15 +40,18 @@ function TodayPage() {
           Showing weather for <strong>{city}</strong> ({units} units).
         </p>
 
-        {weatherState.loading && <p>Loading weather...</p>}
         {weatherState.error && <p style={{ color: "#f97373" }}>{weatherState.error}</p>}
       </div>
 
-      <CurrentWeatherCard
-        current={weatherState.current}
-        location={weatherState.location}
-        units={units}
-      />
+      {weatherState.loading ? (
+        <Spinner animation="border" />
+      ) : (
+        <CurrentWeatherCard
+          current={weatherState.current}
+          location={weatherState.location}
+          units={units}
+        />
+      )}
     </section>
   );
 }
