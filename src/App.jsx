@@ -1,5 +1,4 @@
-import MainLayout from "./components/layout/MainLayout";
-import TodayPage from "./pages/TodayPage";
+import AppRouter from "./router/AppRouter";
 
 // We need to import the styles
 import "./styles/main.scss";
@@ -9,11 +8,8 @@ import "./styles/main.scss";
  * For Day 1 we render only the TodayPage.
  */
 function App() {
-
   return (
-    <MainLayout>
-      <TodayPage />
-    </MainLayout>
+    <AppRouter />
   );
 }
 
