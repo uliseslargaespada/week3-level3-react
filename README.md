@@ -27,3 +27,7 @@ If you are developing a production application, we recommend using TypeScript wi
 ### Day 4 - Implement the HourlyForecastList
 
 * Beautify the UI
+
+### Day 5 - Application Deployment
+
+* Link to the app [react-vite-app](react-vite-week3.netlify.app)
