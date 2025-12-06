@@ -15,9 +15,20 @@ export async function fetchTodayWeather(latitude, longitude, units) {
   const params = {
     latitude,
     longitude,
+
+    // Request these hourly fields.
     hourly: ["temperature_2m", "relativehumidity_2m", "apparent_temperature", "windspeed_10m"],
+
+    // Request current weather.
     current_weather: true,
+
+    // Request timezone and units.
     timezone: "auto",
+
+    // Request daily 
+    // New for Day 4: daily forecast values.
+    daily: ["temperature_2m_max", "temperature_2m_min", "weathercode"],
+
     temperature_unit: isMetric ? "celsius" : "fahrenheit",
     windspeed_unit: isMetric ? "kmh" : "mph"
   };

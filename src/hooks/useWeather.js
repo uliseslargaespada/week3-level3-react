@@ -7,7 +7,8 @@ const initialState = {
   error: null,
   location: null,
   current: null,
-  hourly: []
+  hourly: [],
+  daily: []
 };
 
 /**
@@ -36,11 +37,8 @@ function useWeather(city, units) {
         if (!location) {
           if (!cancelled) {
             setState({
-              loading: false,
-              error: "Location not found.",
-              location: null,
-              current: null,
-              hourly: []
+              ...initialState,
+              error: `Could not find location for "${city}". Please try another city name.`
             });
           }
           return;
@@ -50,6 +48,7 @@ function useWeather(city, units) {
 
         const current = raw.current_weather || null;
         const hourly = raw.hourly || {};
+        const daily = raw.daily || {};
 
         if (!cancelled) {
           setState({
@@ -57,18 +56,16 @@ function useWeather(city, units) {
             error: null,
             location,
             current,
-            hourly
+            hourly,
+            daily
           });
         }
 
       } catch {
         if (!cancelled) {
           setState({
-            loading: false,
-            error: "Could not load weather data. Please try again.",
-            location: null,
-            current: null,
-            hourly: []
+            ...initialState,
+            error: "An error occurred while fetching weather data. Please try again later."
           });
         }
       }
